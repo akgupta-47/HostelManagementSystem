@@ -4,7 +4,8 @@
   "description": "Hostel management system",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "NODE_ENV=development nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "Akshat Gupta",
   "license": "ISC",
