@@ -8,10 +8,6 @@ const profileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  hostel: {
-    type: String,
-    required: [true, 'Every profile should contain users Hostel'],
-  },
   roomInfo: {
     type: String,
   },

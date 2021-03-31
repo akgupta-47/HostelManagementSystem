@@ -77,7 +77,7 @@ exports.getAll = (Model) =>
     //EXECUTE A QUERRY
     // a hack to make review controllr work
     let filterObj = {};
-    if (req.params.tourId) filterObj = { tour: req.params.tourId };
+    if (req.params.postId) filterObj = { post: req.params.postId };
     const features = new APIFeatures(Model.find(filterObj), req.query)
       .filter()
       .sort()

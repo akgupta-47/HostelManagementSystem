@@ -36,7 +36,12 @@ const userSchema = new mongoose.Schema({
       'mess-incharge',
       'laundry-incharge',
       'warden',
+      'owner',
     ],
+  },
+  hostel: {
+    type: String,
+    required: [true, 'Every profile should contain users Hostel'],
   },
   passwordConfirm: {
     type: String,

@@ -9,6 +9,7 @@ const hpp = require('hpp');
 
 const userRouter = require('./routes/userRoutes');
 const maintRouter = require('./routes/maintRoutes');
+const messRouter = require('./routes/messRoutes');
 
 const app = express();
 // eslint-disable-next-line import/newline-after-import
@@ -73,6 +74,7 @@ if (process.env.NODE_ENV === 'DEVELOPMENT') {
 app.use('/', basicRouter);
 app.use('/hms/users', userRouter);
 app.use('/hms/maintenance', maintRouter);
+app.use('/hms/mess', messRouter);
 
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js
