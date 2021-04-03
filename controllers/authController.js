@@ -80,9 +80,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   // console.log(token);
 
   //Send email to client
-  const URL = `${req.protocol}://${req.get(
-    'host'
-  )}/appname/users/signup/${token}`;
+  const URL = `${req.protocol}://${req.get('host')}/hms/users/signup/${token}`;
 
   const message = `You must complete the registration process by following the link below: \n ${URL}.`;
 
