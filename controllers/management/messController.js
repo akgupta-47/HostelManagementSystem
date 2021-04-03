@@ -58,6 +58,10 @@ exports.deleteCurrentMenu = catchAsync(async (req, res, next) => {
     hostel: req.user.hostel,
   });
 
+  if (!menu) {
+    return next(new AppError('No menu found with that data', 404));
+  }
+
   const truncateBefore = function (str, pattern) {
     return str.slice(str.indexOf(pattern) + pattern.length);
   };
@@ -83,6 +87,10 @@ exports.deleteCurrentMenu = catchAsync(async (req, res, next) => {
 
 exports.getCurrentMenu = catchAsync(async (req, res, next) => {
   const menu = await Mess.findOne({ hostel: req.user.hostel });
+
+  if (!menu) {
+    return next(new AppError('No menu found with that data', 404));
+  }
 
   res.status(200).json({
     status: 'success',

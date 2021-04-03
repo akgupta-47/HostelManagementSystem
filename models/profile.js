@@ -38,12 +38,6 @@ const profileSchema = new Schema({
     enum: ['1', '2', '3', '4', 'post-graduate', 'phd'],
   },
   seenPosts: [mongoose.Schema.Types.ObjectId],
-  comp: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Complaint',
-    },
-  ],
 });
 
 const Profile = mongoose.model('profile', profileSchema);

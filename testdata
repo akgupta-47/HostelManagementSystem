@@ -4,3 +4,11 @@
     "password": "bluefrench",
     "passwordConfirm": "bluefrench"
 }
+mess
+{
+    "name": "gordon",
+    "email": "ramsay@gmail.com",
+    "password": "tiliramsay",
+    "passwordConfirm": "tiliramsay",
+    "hostel":  "H"
+}
