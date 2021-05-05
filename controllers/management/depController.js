@@ -24,7 +24,12 @@ exports.newDeparture = catchAsync(async (req, res, next) => {
     dept._id
   }`;
 
-  const message = `Your departure was suppose to end today i.e. ${req.body.nod} days. Either extend your stay or if have completed your departure then use this link to mark your entry ${URL}`;
+  const updateUrl = `${req.protocol}://${req.patch(
+    'host'
+  )}/hms/users/departure/${dept._id}`;
+
+  const message = `Your departure was suppose to end today i.e. ${req.body.nod} days. Either extend your stay or if have completed your departure then use this link to mark your entry ${URL}
+  . Update url ${updateUrl}`;
 
   schedule.scheduleJob(retDate, function () {
     try {
@@ -69,7 +74,26 @@ exports.getMyDeparture = catchAsync(async (req, res, next) => {
 
 exports.deleteMyDepartures = factory.deleteOne(Departure);
 
-exports.updateMyDepartures = factory.updateOne(Departure);
+exports.updateMyDepartures = catchAsync(async (req, res, next) => {
+  const updateDep = await Departure.findOneById(req.params.id);
+
+  if (!updateDep) {
+    return next(new AppError('No departures found', 404));
+  }
+
+  updateDep.nod = req.body.nod;
+  updateDep.reason = req.body.reason;
+  updateDep.place = req.body.place;
+
+  await updateDep.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: updateDep,
+    },
+  });
+});
 
 exports.getAdminDepartures = catchAsync(async (req, res, next) => {
   const dept = await Departure.find({

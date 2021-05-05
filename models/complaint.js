@@ -27,7 +27,6 @@ const complaintSchema = new mongoose.Schema({
   hostel: {
     type: String,
   },
-  expiresAfterSeconds: Date,
 });
 
 const Complaint = mongoose.model('Complaint', complaintSchema);

@@ -1,7 +1,9 @@
+const schedule = require('node-schedule');
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
 const Complaint = require('../../models/complaint');
 const factory = require('../handlerFactory');
+// const sendEmail = require('../../utils/email');
 
 exports.newComplaint = catchAsync(async (req, res, next) => {
   const comp = await Complaint.create({
@@ -63,9 +65,16 @@ exports.resolveComplaints = catchAsync(async (req, res, next) => {
   }
 
   resComp.status = 'solved';
-  resComp.expireAfterSeconds = 30;
 
   await resComp.save({ validateBeforeSave: false });
+
+  const today = new Date();
+  today.setDate(today.getDate() + 1);
+
+  schedule.scheduleJob(today, async () => {
+    // console.log(req.params.id);
+    await Complaint.findByIdAndDelete(req.params.id);
+  });
 
   res.status(200).json({
     status: 'success',
