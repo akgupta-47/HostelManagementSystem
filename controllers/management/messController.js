@@ -4,7 +4,7 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
 const cloudinary = require('../../utils/cloudinaryUpload');
-const Mess = require('../../models/mess');
+const Mess = require('../../models/messModel');
 const factory = require('../handlerFactory');
 
 const multerFilter = (req, file, callback) => {

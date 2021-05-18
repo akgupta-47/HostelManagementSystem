@@ -1,7 +1,7 @@
 const schedule = require('node-schedule');
 const catchAsync = require('../../utils/catchAsync');
 const AppError = require('../../utils/appError');
-const Complaint = require('../../models/complaint');
+const Complaint = require('../../models/compModel');
 const factory = require('../handlerFactory');
 // const sendEmail = require('../../utils/email');
 

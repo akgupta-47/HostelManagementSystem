@@ -1,4 +1,4 @@
-const Maintenance = require('../../models/maintenance');
+const Maintenance = require('../../models/maintModel');
 // const catchAsync = require('../utils/catchAsync');
 const factory = require('../handlerFactory');
 

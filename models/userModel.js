@@ -39,12 +39,6 @@ const userSchema = new mongoose.Schema({
       'owner',
     ],
   },
-  comp: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Complaint',
-    },
-  ],
   hostel: {
     type: String,
     required: [true, 'Every profile should contain users Hostel'],

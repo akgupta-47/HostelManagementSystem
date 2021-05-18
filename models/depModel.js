@@ -16,7 +16,7 @@ const departureSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  reason: {
+  rsn: {
     type: String,
   },
   place: {
