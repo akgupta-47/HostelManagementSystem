@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
 
 const laundrySchema = new mongoose.Schema({
-  usr: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  lNum: {
+  laundNum: {
     type: String,
     required: true,
   },
-  sPhon: {
+  phone: {
     type: Number,
     required: true,
   },
   entry: {
     type: Date,
     default: Date.now,
-    required: [true, 'Every receipt should have an entry date'],
   },
-  due: {
-    type: Date,
+  nod: {
+    type: Number,
+    default: 2,
     //required: [true, 'Every receipt should have a due date'],
   },
   amount: {
@@ -37,12 +37,12 @@ const laundrySchema = new mongoose.Schema({
   },
   clothes: [
     {
-      clothType: String,
-      amount: {
-        type: Number,
-        default: 0,
-      },
-      isTorn: Boolean,
+      type: Map,
+      of: new mongoose.Schema({
+        type: String,
+        amnt: Number,
+        torn: Boolean,
+      }),
     },
   ],
 });

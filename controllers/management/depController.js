@@ -28,7 +28,7 @@ exports.newDeparture = catchAsync(async (req, res, next) => {
 
   // schedule the job
   const retDate = new Date();
-  retDate.setSeconds(retDate.getSeconds() + +req.body.nod);
+  retDate.setDate(retDate.getDate() + +req.body.nod);
 
   const URL = `${req.protocol}://${req.get('host')}/hms/departure`;
 

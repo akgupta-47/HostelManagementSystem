@@ -13,6 +13,8 @@ const messRouter = require('./routes/messRoutes');
 const compRouter = require('./routes/compRoutes');
 const postRouter = require('./routes/postRoutes');
 const deptRouter = require('./routes/deptRoutes');
+const laundRouter = require('./routes/laundRoutes');
+const profileRouter = require('./routes/profileRoutes');
 
 const app = express();
 // eslint-disable-next-line import/newline-after-import
@@ -81,6 +83,8 @@ app.use('/hms/mess', messRouter);
 app.use('/hms/complaint', compRouter);
 app.use('/hms/posts', postRouter);
 app.use('/hms/departure', deptRouter);
+app.use('/hms/profile', profileRouter);
+app.use('/hms/laundry', laundRouter);
 
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js

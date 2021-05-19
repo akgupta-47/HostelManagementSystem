@@ -10,6 +10,7 @@
   "author": "Akshat Gupta",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^2.10.8",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.25.1",
     "cookie-parser": "^1.4.5",

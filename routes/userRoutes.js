@@ -20,7 +20,7 @@ router.patch(
 );
 
 // user update routes
-router.patch('/update-me', authController.protect, userController.updateMe);
+// router.patch('/update-me', authController.protect, userController.updateMe);
 router.delete('/delete-me', authController.protect, userController.deleteMe);
 
 // display user routes

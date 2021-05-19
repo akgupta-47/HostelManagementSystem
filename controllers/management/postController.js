@@ -47,7 +47,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
   // console.log(req.user.hostel);
 
   const today = new Date();
-  today.setSeconds(today.getSeconds() + 50);
+  today.setDate(today.getDate() + 5);
 
   schedule.scheduleJob(today, async () => {
     const truncateBefore = function (str, pattern) {

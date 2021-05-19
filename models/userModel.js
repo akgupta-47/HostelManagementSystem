@@ -15,6 +15,13 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Please enter a valid email!!'],
   },
+  phoneNum: {
+    type: String,
+    required: [true, 'Every user should contain users Contact info'],
+    unique: true,
+    minlength: 10,
+    maxlength: 10,
+  },
   photo: {
     type: String,
     default: 'default.jpg',

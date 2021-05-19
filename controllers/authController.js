@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+const Profile = require('../models/profModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const sendEmail = require('../utils/email');
@@ -58,6 +59,11 @@ exports.confirmSignup = catchAsync(async (req, res, next) => {
   }
   user.validated = true;
   await user.save({ validateBeforeSave: false });
+
+  // create a profile for the user
+  const profile = new Profile({ user: user._id });
+  await profile.save({ validateBeforeSave: false });
+
   createSignToken(user, 200, res);
 });
 
@@ -71,6 +77,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
+    phoneNum: req.body.phone,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     hostel: req.body.hostel,

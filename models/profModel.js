@@ -11,22 +11,16 @@ const profileSchema = new Schema({
   roomInfo: {
     type: String,
   },
-  laundryNumber: {
+  laundNum: {
     type: String,
+    required: true,
     unique: true,
   },
-  rollNumber: {
-    type: Number,
+  rollNum: {
+    type: String,
     unique: true,
     minlength: 9,
     maxlength: 9,
-  },
-  phoneNumber: {
-    type: Number,
-    required: [true, 'Every profile should contain users Contact info'],
-    unique: true,
-    minlength: 10,
-    maxlength: 10,
   },
   blood: {
     type: String,
@@ -34,10 +28,16 @@ const profileSchema = new Schema({
     enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
   },
   year: {
-    default: String,
+    type: String,
     enum: ['1', '2', '3', '4', 'post-graduate', 'phd'],
   },
-  seenPosts: [mongoose.Schema.Types.ObjectId],
+});
+
+profileSchema.pre(/^find/, function () {
+  this.populate({
+    path: 'user',
+    select: 'name email',
+  });
 });
 
 const Profile = mongoose.model('profile', profileSchema);
